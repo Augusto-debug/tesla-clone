@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Fade from 'react-reveal/Fade';
 
 // function Section({titulo, descricao ...}) // Dessa forma nós pegamos diretamente do objeto os valores em si. 
 
@@ -7,11 +8,14 @@ import styled from 'styled-components';
 function Section({titulo, descricao, textoBotaoEsquerdo, textoBotaoDireito, imagemFundo}) {
   return (
     <Envolve imagemFundo = {imagemFundo}>
+        <Fade bottom>
         <TextoItem>
             <h1>{titulo}</h1>
             <p>{descricao}</p>
         </TextoItem>
+        </Fade>
         <Botoes>
+        <Fade bottom>
         <AgrupamentoBotoes>
         <BotaoEsquerdo>
             {textoBotaoEsquerdo}
@@ -20,8 +24,8 @@ function Section({titulo, descricao, textoBotaoEsquerdo, textoBotaoDireito, imag
          <BotaoDireito>
             {textoBotaoDireito}
         </BotaoDireito>}
-        
         </AgrupamentoBotoes>
+        </Fade>
         <Flecha src="img/down-arrow.svg" />
         </Botoes>
     </Envolve>
@@ -32,7 +36,7 @@ export default Section;
 
 const Envolve = styled.div`
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-image: ${props => `url('img/${props.imagemFundo}')`};
     background-size: cover;
     background-position: center;
@@ -52,7 +56,7 @@ const AgrupamentoBotoes = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 30px;
-    @media (max-width:760px) {
+    @media (max-width:768px) {
         flex-direction:column;
     }
 `
